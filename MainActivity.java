@@ -64,9 +64,9 @@ public class MainActivity extends Activity implements OnClickListener {
                     {R.id.radioButton144, R.id.radioButton244, R.id.radioButton344, R.id.radioButton444},
             }
     };
-    static Button radiobutton[][][] = new Button[10][10][10];
-    char matrix[][][] = new char[10][10][10];
-    char matrix2[]=new char[100];
+    static Button radiobutton[][][] = new Button[4][4][4];
+    char matrix[][][] = new char[7][7][7];
+    char matrix2[]=new char[64];
     boolean win = false;
     boolean connected = false;
     String readMessage="";
@@ -85,7 +85,7 @@ public class MainActivity extends Activity implements OnClickListener {
         for (int z = 0; z < 4; z++) {
             for (int y = 0; y < 4; y++) {
                 for (int x = 0; x < 4; x++) {
-                    matrix[z][y][x] = ' ';
+                    matrix[z][y][x] = 'X';
                 }
             }
         }
@@ -158,11 +158,12 @@ public class MainActivity extends Activity implements OnClickListener {
             for (int y = 0; y < 4; y++) {
                 for (int x = 0; x < 4; x++) {
                     if (v.getId() == idArray[z][y][x]) {
-                        if (matrix[z][y][x] == ' ') {
+                        if (matrix[z][y][x] == 'X') {
 
                             matrix[z][y][x]='R';
                             matrixTranslator2();
                             String tmp = String.copyValueOf(matrix2);
+                            matrix[z][y][x]='X';
                             led_on_off(tmp);
                             checkIfWin('R');
                         }
